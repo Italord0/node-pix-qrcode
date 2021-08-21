@@ -2,7 +2,7 @@ const { PIX } = require('gpix/dist');
 
 const express = require('express')
 const app = express()
-const port = 7777
+const port = 3000
 app.use(express.json())
 
 function generateImgTag(base64) {
