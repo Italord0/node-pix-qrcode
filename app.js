@@ -23,7 +23,10 @@ function generatePix(params) {
     return PIX.static()
         .setReceiverName(receiverName)
         .setReceiverCity(receiverCity)
-        .setReceiverZipCode(receiverZipCode) // 3000// optional
+        .setReceiverZipCode(receiverZipCode)
+        .setKey(key)
+        .setDescription(description)
+        .isUniqueTransaction(uniqueTransaction)
         .setAmount(amount) // optional
 }
 
