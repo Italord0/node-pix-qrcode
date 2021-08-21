@@ -2,7 +2,7 @@ const { PIX } = require('gpix/dist');
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 7777
 app.use(express.json())
 
 function generateImgTag(base64) {
@@ -23,10 +23,7 @@ function generatePix(params) {
     return PIX.static()
         .setReceiverName(receiverName)
         .setReceiverCity(receiverCity)
-        .setReceiverZipCode(receiverZipCode) // optional
-        .setKey(key)
-        .setDescription(description) // optional
-        .isUniqueTransaction(uniqueTransaction) // optional
+        .setReceiverZipCode(receiverZipCode) // 3000// optional
         .setAmount(amount) // optional
 }
 
