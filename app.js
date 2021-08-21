@@ -2,7 +2,7 @@ const { PIX } = require('gpix/dist');
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 7777
 app.use(express.json())
 
 function generateImgTag(base64) {
@@ -30,7 +30,7 @@ function generatePix(params) {
         .setAmount(amount) // optional
 }
 
-app.post('/', async (req, res) => {
+app.post('/pix', async (req, res) => {
 
     let pix = generatePix(req.body)
     let base64 = await pix.getQRCode()
