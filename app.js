@@ -1,12 +1,12 @@
 const { PIX } = require('gpix/dist');
-
+const fs = require('fs');
 const express = require('express')
 const path = require('path');
 const app = express()
 const port = 7777
 
 app.use(express.json())
-app.use('/img',express.static(__dirname + '/img'))
+app.use('/img', express.static(__dirname + '/img'))
 
 function generatePix(params) {
     let {
@@ -37,9 +37,9 @@ app.post('/pix64', async (req, res) => {
 
         console.log(pix)
 
-        res.json({ "base64": base64 })
+        res.status(201).json({ "base64": base64 })
     } catch (error) {
-        res.json(400, { "error": error })
+        res.status(400).json({ "error": error })
     }
 
 })
@@ -59,5 +59,10 @@ app.post('/pix', async (req, res) => {
 
 
 app.listen(port, () => {
+    var dir = './img';
+
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
     console.log(`servidor rodando na porta : ${port}`)
 })
