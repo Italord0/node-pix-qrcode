@@ -27,17 +27,21 @@ function generatePix(params) {
         .setKey(key)
         .setDescription(description)
         .isUniqueTransaction(uniqueTransaction)
-        .setAmount(amount) // optional
+        .setAmount(amount)
 }
 
 app.post('/pix', async (req, res) => {
 
-    let pix = generatePix(req.body)
-    let base64 = await pix.getQRCode()
+    try {
+        let pix = generatePix(req.body)
+        let base64 = await pix.getQRCode()
 
-    console.log(pix)
+        console.log(pix)
 
-    res.send(generateImgTag(base64))
+        res.send(generateImgTag(base64))
+    } catch (error) {
+        res.json(400,{"error" : error})
+    }
 
 })
 
