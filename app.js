@@ -50,7 +50,7 @@ app.post('/pix', async (req, res) => {
     let fileName = 'img/' + date.getTime() + '.png'
     if (await pix.saveQRCodeFile(fileName)) {
         console.log('success in saving static QR-code')
-        res.status(201).json({ "url": 'http://italomelo.dev.br/' + fileName });
+        res.status(201).json({ "url": 'http://italomelo.dev.br:7777/' + fileName });
     } else {
         console.log('error saving QR-code')
     }
